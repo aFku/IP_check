@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM python:3-slim
 
 EXPOSE 8080
 
@@ -10,7 +10,18 @@ WORKDIR /
 
 RUN pip install pip --upgrade
 
+RUN apt-get update
+
+RUN apt-get upgrade
+
+RUN apt-get install -y python3-dev #Tools for python
+
+RUN apt-get install -y gcc # need for build mysqlclient
+
+RUN apt install -y default-libmysqlclient-dev # need to use mysql engine in django
+
+RUN pip install mysqlclient
+
 RUN pip install -r requirements.txt
 
 CMD ["gunicorn", "IP_check.wsgi", "-b :8080"]
-
