@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'IP_check.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ipcheck',
+        'USER': 'kubernetes',
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': '192.168.2.2',
+        'PORT': '3306'
     }
 }
 
