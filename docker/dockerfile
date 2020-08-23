@@ -2,7 +2,12 @@ FROM python:3-slim
 
 EXPOSE 8080
 
-#ENV DB_PASS
+ENV DB_PASS=
+ENV DB_HOST=
+ENV DB_USER=
+ENV DB_NAME=
+ENV DB_PORT=
+ENV INGRESS_IP=
 
 ADD /IP_check/ /
 
@@ -24,4 +29,4 @@ RUN pip install mysqlclient
 
 RUN pip install -r requirements.txt
 
-CMD ["gunicorn", "IP_check.wsgi", "-b :8080"]
+CMD ["./start.sh"]

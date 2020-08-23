@@ -1,6 +1,38 @@
 <html>
 <body>
-    <h1 style="text-align:center">Node's IP:</h1>
-    <p style="text-align:center">{{ip}}</p>
+    <div>
+    	<h1 style="text-align:center">Container's IP:</h1>
+    	<p style="text-align:center">{{ip}}</p>
+    </div>
+    <div>	
+    	<h1 style="text-align:center">Posts:</h1>
+        <br>
+        {% for post in posts %}
+		<div>
+                   <p style="text-align:center"> Author: {{post.author}} </p>
+                   <p style="text-align:center">  Date: {{post.publish_date}} </p>
+                   <p style="text-align:center">  Content: {{post.content}} </p>
+                </div>
+        {% endfor %}
+    </div>
+    <div style="text-align: center">
+    	<h1 style="text-align:center">Add Post</h1>
+        <form method="post" ALGIN="center">
+        {% csrf_token %}
+        <table style="margin-left: auto; margin-right: auto;">
+            <tr>
+                <td>Author:</td>
+                <td>{{form.author}}</td>
+            </tr>
+            <tr>
+                <td>Content:</td>
+                <td>{{form.content}}</td>
+            </tr>
+        </table> 
+        <br>
+        <br>
+        <input type="submit" value="Add Post!">
+        </form>
+    </div>
 </body>
 </html>

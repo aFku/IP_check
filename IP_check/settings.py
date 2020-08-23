@@ -25,7 +25,7 @@ SECRET_KEY = '7*%-)!^noqmf&d*6w!$jr=+*+@vfmk+d_z8m(w96pj(_%39a5o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', os.getenv('INGRESS_IP')]
 
 
 # Application definition
@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'IP_check.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ipcheck',
-        'USER': 'kubernetes',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASS'),
-        'HOST': '192.168.2.2',
-        'PORT': '3306'
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
     }
 }
 
