@@ -5,7 +5,7 @@ from .forms import PostForm
 
 def ip_view(request):
     name = socket.gethostname()
-    ip = socket.gethostbyname(name
+    ip = socket.gethostbyname(name)
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
